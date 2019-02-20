@@ -35,5 +35,8 @@ class Lecturer(user):
     	#this is where the lecturer class will be instantiated for the given Lecturer information. 
 
 class Token:
-    def __init__(userID):
+    def __init__(self, userID):
+#        self.__ExpiryDate
+        self.__TokenID = userID
+        self.__AdminPermissions = userID[0]
         
