@@ -1,14 +1,13 @@
 #/bin/python3
 def addQuestion(testID, questionID, questionType, questionText, answer, choices):
     """
-    >>> addQuestion("Q0001",bool(1),"How many unique representations can 8 bits make","256","none")
+    >>> addQuestion("000115","Q0001",bool(1),"How many unique representations can 8 bits make","256","none")
     >>> import csv
     >>> f = open("000115.csv","r")
     >>> fr = csv.reader(f)
     >>> LastItem = []
     >>> for row in fr:
     ...     LastItem = row
-    >>> print(LastItem)
     >>> print(LastItem[0] == "Q0001")
     True
     >>> print(LastItem[1] == "1")
