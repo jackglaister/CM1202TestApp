@@ -18,5 +18,5 @@ def addQuestion(testID, questionID, questionType, questionText, answer, choices)
     True
     """
     f = open(str(testID)+".csv","a")
-    f.write(str(questionID)+","+str(int(questionType))+","+str(questionText)+","+str(answer)+","+str("choices")+"\n")
+    f.write(str(questionID)+","+str(int(questionType))+","+str(questionText)+","+str(answer)+","+str(choices)+"\n")
     f.close()
