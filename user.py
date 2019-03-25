@@ -36,7 +36,7 @@ class Lecturer(user):
 
 class Token:
     def __init__(self, userID):
-#        self.__ExpiryDate
+        self.__ExpiryDate
         self.__TokenID = userID
         self.__AdminPermissions = userID[0]
         
