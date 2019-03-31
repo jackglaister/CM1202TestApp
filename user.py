@@ -16,23 +16,27 @@ class User:
         for item in range(len(users[::3])):
             if users[item] == un and users[item+1] == hashlib.sha256(b(pw)).hexdigest():
                 self.__name=un
-                self.__password=pw
                 self.__ID=users[item+2]
-                self.__sessionToken=Token.Token(self.__ID)
+                self.sessionToken=Token.Token(self.__ID)
                 return True
         else:
             return False
-
-class Student(user):
-    def Menu():
-        break
-
-class Lecturer(user):
-    def __setFormativeTest():
-    def __setSummativeTest():
-    def __setDeadline():
     def __init__(self):
-    	#this is where the lecturer class will be instantiated for the given Lecturer information. 
+        self.verifyLogin()
+
+class Student(User):
+    def Menu():
+        pass
+
+class Lecturer(User):
+    def __setFormativeTest():
+        pass
+    def __setSummativeTest():
+        pass
+    def __setDeadline():
+        pass
+    def menu():
+        pass
 
 class Token:
     def __init__(self, userID):
