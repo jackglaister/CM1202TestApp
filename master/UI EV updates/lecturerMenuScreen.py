@@ -10,7 +10,7 @@ class LecturerWindow():
         self.table.grid(row=0, column=1, columnspan=2)
         frame = Frame()
 
-        with open("Test File.csv") as f:
+        with open("exams.csv") as f:
             self.columns = next(f, None).split(",")
 
             for i, column in enumerate(self.columns):

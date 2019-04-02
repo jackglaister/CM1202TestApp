@@ -3,6 +3,7 @@ import csv
 from dialogwindow import Dialog
 
 
+
 class MarksDialog(Dialog):
     '''
     Dialog to display the marks of a test
@@ -16,7 +17,6 @@ class MarksDialog(Dialog):
     def body(self, master):
         exam = self.exam
         marks = self.marks
-        self.row = 0
 
         Label(self, text="Exam: ").grid(row=self.row, column=0)
         Label(self, text=exam['TestName']).grid(row=self.row, column=1)
@@ -30,34 +30,50 @@ class MarksDialog(Dialog):
             Label(self, text="Attempt {0}: ".format(i + 1)).grid(row=self.row, column=0)
             Label(self, text="{}".format(mark["Mark"])).grid(row=self.row, column=1)
             self.row +=1
+
 
 class TakeTest(Dialog):
     """
     Dialog to display the test which needs to be taken by the student
 
     """
-    def __init__(self, parent, title, exam, marks):
+    def __init__(self, parent, title, exam, questions):
         self.exam = exam
-        self.marks = marks
+        self.questions = questions
+        self.answervar = [StringVar() for x in range(len(questions))]
+
         super().__init__(parent, title)
+
 
     def body(self, master):
         exam = self.exam
-        marks = self.marks
+        questions = self.questions
         self.row = 0
 
-        Label(self, text="Exam: ").grid(row=self.row, column=0)
-        Label(self, text=exam['TestName']).grid(row=self.row, column=1)
+        Label(self, text="Exam: ").grid(row=self.row, column=0, sticky=W)
+        Label(self, text=exam['TestName']).grid(row=self.row, column=1, sticky=W)
         self.row += 1
 
-        Label(self, text="Exam Type: ").grid(row=self.row, column=0)
-        Label(self, text=exam['TestType']).grid(row=self.row, column=1)
+        Label(self, text="Exam Type: ").grid(row=self.row, column=0, sticky=W)
+        Label(self, text=exam['TestType']).grid(row=self.row, column=1, sticky=W)
         self.row += 1
 
-        for i, mark in enumerate(marks):
-            Label(self, text="Attempt {0}: ".format(i + 1)).grid(row=self.row, column=0)
-            Label(self, text="{}".format(mark["Mark"])).grid(row=self.row, column=1)
-            self.row +=1
+        for i, question in enumerate(questions):
+            Label(self, text=question["Question"]).grid(row=self.row, column=0, sticky=W)
+            self.row += 1
+
+            if question["QuestionType"] == "mcq":
+                self.answervar[i].set(None)
+                for ans in range(1, 5):
+                    Radiobutton(self, variable=self.answervar[i],
+                                text=question["Answer{}".format(ans)], value=ans).grid(row=self.row, column=0, sticky=W)
+
+                    self.row += 1
+            else:
+                Entry(self, textvar=self.answervar[i]).grid(row=self.row, column=1, sticky=W+E+N+S)
+                self.row += 1
+
+
 class StudentWindow():
     def __init__(self, root, user):
         self.root = root
@@ -123,7 +139,18 @@ class StudentWindow():
         :param x: The row number for the test
         :return:
         '''
-        print("Take the test for row ", x)
+        exam = self.exams[x]
+
+        with open("questions.csv") as f:
+            questions = []
+            reader = csv.DictReader(f)
+            exam_name = exam['TestName'].lower()
+            for question in reader:
+                q_test_name = question['TestName'].lower().strip()
+                if q_test_name == exam_name:
+                    questions.append(question)
+
+            TakeTest(self.root, exam["TestName"], exam, questions)
 
     def view_marks(self, x):
         print("View marks for row", x)
@@ -146,7 +173,7 @@ class StudentWindow():
 def main(user):
 
     root = Tk()
-    root.geometry("800x450")
+    root.geometry("600x300")
     app = StudentWindow(root, user)
     root.mainloop()
 
