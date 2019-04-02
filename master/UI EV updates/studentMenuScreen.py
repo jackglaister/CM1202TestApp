@@ -1,7 +1,7 @@
 from tkinter import *
 import csv
 from dialogwindow import Dialog
-
+from utils import MenuScreen, TakeTest
 
 
 class MarksDialog(Dialog):
@@ -32,50 +32,11 @@ class MarksDialog(Dialog):
             self.row +=1
 
 
-class TakeTest(Dialog):
-    """
-    Dialog to display the test which needs to be taken by the student
-
-    """
-    def __init__(self, parent, title, exam, questions):
-        self.exam = exam
-        self.questions = questions
-        self.answervar = [StringVar() for x in range(len(questions))]
-
-        super().__init__(parent, title)
 
 
-    def body(self, master):
-        exam = self.exam
-        questions = self.questions
-        self.row = 0
-
-        Label(self, text="Exam: ").grid(row=self.row, column=0, sticky=W)
-        Label(self, text=exam['TestName']).grid(row=self.row, column=1, sticky=W)
-        self.row += 1
-
-        Label(self, text="Exam Type: ").grid(row=self.row, column=0, sticky=W)
-        Label(self, text=exam['TestType']).grid(row=self.row, column=1, sticky=W)
-        self.row += 1
-
-        for i, question in enumerate(questions):
-            Label(self, text=question["Question"]).grid(row=self.row, column=0, sticky=W)
-            self.row += 1
-
-            if question["QuestionType"] == "mcq":
-                self.answervar[i].set(None)
-                for ans in range(1, 5):
-                    Radiobutton(self, variable=self.answervar[i],
-                                text=question["Answer{}".format(ans)], value=ans).grid(row=self.row, column=0, sticky=W)
-
-                    self.row += 1
-            else:
-                Entry(self, textvar=self.answervar[i]).grid(row=self.row, column=1, sticky=W+E+N+S)
-                self.row += 1
-
-
-class StudentWindow():
+class StudentWindow(MenuScreen):
     def __init__(self, root, user):
+        super().__init__()
         self.root = root
         self.user = user
 
@@ -93,11 +54,11 @@ class StudentWindow():
 
         frame = Frame(bg="lightblue")
 
-        self.read_questions()
+        self.load_student_data()
         logoutButton = Button(self.root, text="Log Out", command=frame.quit)
         logoutButton.grid(row=1, column=0)
 
-    def read_questions(self):
+    def load_student_data(self):
         '''
         Reads the results and the exams
 
@@ -141,17 +102,31 @@ class StudentWindow():
         '''
         exam = self.exams[x]
 
-        with open("questions.csv") as f:
-            questions = []
-            reader = csv.DictReader(f)
-            exam_name = exam['TestName'].lower()
-            for question in reader:
-                q_test_name = question['TestName'].lower().strip()
-                if q_test_name == exam_name:
-                    questions.append(question)
+        questions = self.get_exam_questions(exam)
 
-            TakeTest(self.root, exam["TestName"], exam, questions)
+        t = TakeTest(self.root, exam["TestName"], exam, questions)
+        q = t.questions
 
+        with open("test_answers.csv", "a") as f:
+            fields = list(q[0].keys())
+            fields.append("Student")
+            fields.append("Markes")
+            writer = csv.DictWriter(f, fieldnames=fields, delimiter=',', lineterminator='\n')
+            for question in q:
+                question['Student'] = self.user
+                #writer.writeheader()
+
+                # the checking answer part comes here as described below
+                writer.writerow(question)
+
+
+        # to finish tis. we need to compare gainst the professors answers.
+        # that's in the Correct field for each question in self.questions
+
+        # so each question that's been attemped (for question in q) needs to be
+        # compared against the corresponding entry in all_questions, we will then set a
+        # marks fields in the question 1 for correct (matches lectureres choice) 1 for
+        # incorrect - does not match the lecturers choice
     def view_marks(self, x):
         print("View marks for row", x)
         exam = self.exams[x]
