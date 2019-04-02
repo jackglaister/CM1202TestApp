@@ -1,16 +1,12 @@
 from tkinter import *
 
 
-class Window(Frame):
-    def __init__(self, master=None):
-
-        Frame.__init__(self, master=None)
-
-        self.table = Frame(self)
-        self.master = master
-
+class LecturerWindow():
+    def __init__(self, root):
+        self.root = root
+        self.table = Frame(self.root)
         self.rows = 0;
-        self.pack(padx=20, pady=50)
+#        self.root.pack(padx=20, pady=50)
         self.table.grid(row=0, column=1, columnspan=2)
         frame = Frame()
 
@@ -35,10 +31,10 @@ class Window(Frame):
             self.rows = i + 1
 
 
-        logoutButton = Button(self, text="Log Out", command=frame.quit)
+        logoutButton = Button(self.root, text="Log Out", command=frame.quit)
         logoutButton.grid(row=1, column=0)
 
-        newTestButton = Button(self, text="Create a new test")
+        newTestButton = Button(self.root, text="Create a new test")
         newTestButton.grid(row=1, column=3, pady=10, padx=25)
 
     def view_marks(self, x):
@@ -49,15 +45,14 @@ class Window(Frame):
 
 
     def edit_test(self, x):
-        self.master.title("Main Menu")
-        self.pack(fill=NONE, expand=True)
+        self.root.title("Main Menu")
+        #self.pack(fill=NONE, expand=True)
 
 
 def main():
     root = Tk()
     root.geometry("800x450")
-    app = Window(root)
-
+    app = LecturerWindow(root)
     root.mainloop()
 
 if __name__ == '__main__':
