@@ -1,0 +1,64 @@
+•	User
+•	verifyLogin
+o	Input: ID and Password
+o	Have access to users file
+o	Return User or False
+•	Token
+•	getTokenInfo
+•	Student
+•	Lecturer
+•	setFormativeTest
+o	Input: Testname, deadline, releasedate
+o	Generate a file that defines the testname, deadline, releasedate, testID, lecturerID
+o	Genereate an empty file to store results in
+•	setSummativeTest
+o	Input: Testname, deadline, releasedate
+o	Generate a file that defines the testname, deadline, releasedate, testID, lecturerID, attemptLimit
+o	Generate an empty file to store results in
+•	Test
+•	attemptTest
+o	Parameters: testID and studentID
+o	Check that test is not completed
+o	Load the testfile, display and number each question in it
+o	Return studentsAnswers (as a list)
+ 
+•	addQuestionToTest
+o	Parameters:  testID and questionType
+o	Generate QuestionID
+o	Read questiontext, answer, (choices)
+Return newQuestion (as a list)
+ 
+•	removeQuestionFromTest
+o	Parameters: QuestionID
+o	Removes question from TestFile
+ 
+•	markTest
+o	Paramters: StudenID, StudentsAnswers and testID
+o	Go through each answer and compare to the solution
+o	Increase attempt count by 1
+o	Display mark
+o	(For formative tests) Displays correct or incorrect for each question
+o	(For formative tests) the user either: Call that the final attempt and viewAnswers or  have another attempt (increase attempts by 1 and re-run attemptTest)
+o	Returns 1 (correct) or 0 (incorrect) for each question (as a list) 
+ 
+•	Formative Test
+•	viewAnswers
+o	If it's a formative test or it's a summative test that has had it's deadline
+o	Input TestID
+o	Display Questions in order and their answers
+ 
+•	Summative Test
+•	saveResults
+o	Paramters: results( as a list of 1s and 0s), testID, studentID
+o	Save a new row on the test's results file 
+•	viewSummary
+o	Paramters: testID
+o	Calculate: % correct for each question and display it
+o	Calculate: which question was most often answered wrong
+o	Display both of the above
+o	Display each student that took the test and how many attempts they took.
+ 
+•	Question
+•	editQuestion
+•	askQuestion
+
