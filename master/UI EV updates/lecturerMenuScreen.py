@@ -1,13 +1,8 @@
 from tkinter import *
 import csv
 from dialogwindow import Dialog
-<<<<<<< HEAD
 from utils import TakeTest, MenuScreen, MarksDialog
 
-=======
-from utils import TakeTest, MenuScreen
-import newTest
->>>>>>> 81c0066e2a2b9077d43002c76fa4415b95c6d05f
 
 class LecturerWindow(MenuScreen):
     def __init__(self, root):
@@ -41,16 +36,11 @@ class LecturerWindow(MenuScreen):
         logoutButton = Button(self.root, text="Log Out", command=frame.quit)
         logoutButton.grid(row=1, column=1)
 
-<<<<<<< HEAD
         newTestButton = Button(self.root, text="Create a new test")
         newTestButton.grid(row=1, column=2, pady=10, padx=25)
 
         statsButton = Button(self.root, text="See statistics for tests")
         statsButton.grid(row=1, column=3, pady=10, padx=25)
-=======
-        newTestButton = Button(self.root, text="Create a new test", command=newTest.main)
-        newTestButton.grid(row=1, column=3, pady=10, padx=25)
->>>>>>> 81c0066e2a2b9077d43002c76fa4415b95c6d05f
 
     def view_marks(self, x):
 
@@ -68,7 +58,6 @@ class LecturerWindow(MenuScreen):
 
 
     def edit_test(self, x):
-        print(x)
         '''
         Edit test.
 
@@ -108,12 +97,11 @@ class LecturerWindow(MenuScreen):
                         except KeyError:
                             pass
                 writer.writerow(question)
-def main(user):
+def main():
     root = Tk()
     root.geometry("800x450")
     app = LecturerWindow(root)
     root.mainloop()
 
-if __name__ == "__main__":
-    from loginScreen import Login
-    Login().login_screen.mainloop()
+if __name__ == '__main__':
+    main()

@@ -42,8 +42,8 @@ class Login():
 
 
     def login_verify(self):
-        username = self.username_verify.get()
-        password = self.password_verify.get()
+        username = "c00001" # self.username_verify.get()
+        password = "password" # self.password_verify.get()
         self.username_login_entry.delete(0, END)
         self.password_login_entry.delete(0, END)
 
@@ -67,9 +67,9 @@ class Login():
 
         self.login_screen.withdraw()
         if user[2] == 'lecturer':
-            lecturerMenuScreen.main(user)
+            lecturerMenuScreen.main()
         else:
-            studentMenuScreen.main(user)
+            studentMenuScreen.main()
 
     def user_not_found(self):
 
@@ -89,4 +89,5 @@ class Login():
 
 
 if __name__ == '__main__':
-    Login().login_screen.mainloop()  # start the GUI
+    login = Login()
+    login.login_screen.mainloop()  # start the GUI
