@@ -2,7 +2,7 @@ from tkinter import *
 import csv
 from dialogwindow import Dialog
 from utils import TakeTest, MenuScreen
-
+import newTest
 
 class LecturerWindow(MenuScreen):
     def __init__(self, root):
@@ -37,7 +37,7 @@ class LecturerWindow(MenuScreen):
         logoutButton = Button(self.root, text="Log Out", command=frame.quit)
         logoutButton.grid(row=1, column=0)
 
-        newTestButton = Button(self.root, text="Create a new test")
+        newTestButton = Button(self.root, text="Create a new test", command=newTest.main)
         newTestButton.grid(row=1, column=3, pady=10, padx=25)
 
     def view_marks(self, x):
