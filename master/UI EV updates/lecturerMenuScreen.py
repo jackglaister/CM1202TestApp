@@ -84,11 +84,12 @@ class LecturerWindow(MenuScreen):
                         question['Correct'] = edited_question['Correct']
                         break;
                 writer.writerow(question)
-def main():
+def main(user):
     root = Tk()
     root.geometry("800x450")
     app = LecturerWindow(root)
     root.mainloop()
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    from loginScreen import Login
+    Login().login_screen.mainloop()

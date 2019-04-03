@@ -67,9 +67,9 @@ class Login():
 
         self.login_screen.withdraw()
         if user[2] == 'lecturer':
-            lecturerMenuScreen.main()
+            lecturerMenuScreen.main(user)
         else:
-            studentMenuScreen.main()
+            studentMenuScreen.main(user)
 
     def user_not_found(self):
 
@@ -89,5 +89,4 @@ class Login():
 
 
 if __name__ == '__main__':
-    login = Login()
-    login.login_screen.mainloop()  # start the GUI
+    Login().login_screen.mainloop()  # start the GUI

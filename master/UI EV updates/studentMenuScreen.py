@@ -146,11 +146,11 @@ class StudentWindow(MenuScreen):
 
 
 def main(user):
-
     root = Tk()
     root.geometry("600x300")
     app = StudentWindow(root, user)
     root.mainloop()
 
-if __name__ == '__main__':
-    main(user="c10002")
+if __name__ == "__main__":
+    from loginScreen import Login
+    Login().login_screen.mainloop()
