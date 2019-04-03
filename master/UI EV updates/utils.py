@@ -18,7 +18,6 @@ class MenuScreen():
         questions = []
         exam_name = exam['TestName'].lower()
         for question in self.all_questions:
-            print(question)
             q_test_name = question['TestName'].lower().strip()
             if q_test_name == exam_name:
                 questions.append(question)
