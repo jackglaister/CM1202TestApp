@@ -2,6 +2,63 @@ from tkinter import *
 import csv
 from dialogwindow import Dialog
 
+
+class MarksDialog(Dialog):
+    '''
+    Dialog to display the marks of a test
+    '''
+
+    def __init__(self, parent, title, exam, marks):
+        self.exam = exam
+        self.marks = marks
+        super().__init__(parent, title)
+
+    def body(self, master):
+        exam = self.exam
+        marks = self.marks
+
+        Label(self, text="Exam: ").grid(row=self.row, column=0)
+        Label(self, text=exam['TestName']).grid(row=self.row, column=1)
+        self.row += 1
+
+        Label(self, text="Exam Type: ").grid(row=self.row, column=0)
+        Label(self, text=exam['TestType']).grid(row=self.row, column=1)
+        self.row += 1
+
+        if marks:
+            scores = [int(mark["Mark"]) for mark in marks]
+            highest = max(scores)
+            lowest = min(scores)
+
+            if len(marks[0]) == 3:
+                Label(self, text="Student Id").grid(row=self.row, column=0)
+            else:
+                Label(self, text="Attempt").grid(row=self.row, column=0)
+
+            Label(self, text="Marks").grid(row=self.row, column=1)
+
+            self.row += 1
+            for i, mark in enumerate(marks):
+                if mark.get("StudentId"):
+                    Label(self, text="{}".format(mark["StudentId"])).grid(row=self.row, column=0)
+                else:
+                    Label(self, text="Attempt {0}: ".format(i + 1)).grid(row=self.row, column=0)
+
+                Label(self, text="{}".format(mark["Mark"])).grid(row=self.row, column=1)
+                self.row += 1
+
+            if mark.get("StudentId"):
+                Label(self, text="Highest score").grid(row=self.row, column=0)
+                Label(self, text=str(highest)).grid(row=self.row, column=1)
+                self.row += 1
+                Label(self, text="Lowest score").grid(row=self.row, column=0)
+                Label(self, text=str(lowest)).grid(row=self.row, column=1)
+
+
+        else:
+            Label(self,text="Not Atempted").grid(row=self.row, column=0, columnspan=2)
+
+
 class MenuScreen():
 
     def __init__(self):

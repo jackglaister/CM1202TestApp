@@ -1,7 +1,7 @@
 from tkinter import *
 import csv
 from dialogwindow import Dialog
-from utils import TakeTest, MenuScreen
+from utils import TakeTest, MenuScreen, MarksDialog
 
 
 class LecturerWindow(MenuScreen):
@@ -43,10 +43,15 @@ class LecturerWindow(MenuScreen):
         statsButton.grid(row=1, column=3, pady=10, padx=25)
 
     def view_marks(self, x):
-        print("take the tet for row ", x)
 
         exam = self.exams[x]
-        questions = self.get_exam_questions(exam)
+        results = self.get_results(exam)
+        marks = []
+
+        for result in results:
+            marks.append(result)
+
+        di = MarksDialog(self.root, "Exam marks", exam, marks)
 
     def view_test(self, x):
         print("View test", x)

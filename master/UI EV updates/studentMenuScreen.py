@@ -1,40 +1,7 @@
 from tkinter import *
 import csv
 from dialogwindow import Dialog
-from utils import MenuScreen, TakeTest
-
-
-class MarksDialog(Dialog):
-    '''
-    Dialog to display the marks of a test
-    '''
-
-    def __init__(self, parent, title, exam, marks):
-        self.exam = exam
-        self.marks = marks
-        super().__init__(parent, title)
-
-    def body(self, master):
-        exam = self.exam
-        marks = self.marks
-
-        Label(self, text="Exam: ").grid(row=self.row, column=0)
-        Label(self, text=exam['TestName']).grid(row=self.row, column=1)
-        self.row += 1
-
-        Label(self, text="Exam Type: ").grid(row=self.row, column=0)
-        Label(self, text=exam['TestType']).grid(row=self.row, column=1)
-        self.row += 1
-
-        if marks:
-            for i, mark in enumerate(marks):
-                Label(self, text="Attempt {0}: ".format(i + 1)).grid(row=self.row, column=0)
-                Label(self, text="{}".format(mark["Mark"])).grid(row=self.row, column=1)
-                self.row +=1
-        else:
-            Label(self,text="Not Atempted").grid(row=self.row, column=0, columnspan=2)
-
-
+from utils import MenuScreen, TakeTest, MarksDialog
 
 class StudentWindow(MenuScreen):
     def __init__(self, root, user):
@@ -76,19 +43,22 @@ class StudentWindow(MenuScreen):
         for i, parts in enumerate(self.exams):
 
             for j, (key, val) in enumerate(parts.items()):
-                Label(self.table, text=val).grid(row=i+1, column=j, padx=1)
+                if key == 'ResultsRelease':
+                    text = "Yes" if val == "1" else "No"
+                else:
+                    text = val
+                Label(self.table, text=text).grid(row=i+1, column=j, padx=1)
 
             button = Button(self.table, text="Take Test", command=lambda x=i: self.take_test(x))
             button.grid(row=i+1, column=j+1,  pady = 10, padx = 20)
 
-            if parts["ResultsRelease"]:
-                state = "normal"
+            if parts["ResultsRelease"] == "1":
+                button = Button(self.table, text="View Marks",
+                                command=lambda x=i: self.view_marks(x))
+                button.grid(row=i + 1, column=j + 2)
             else:
-                state = DISABLED
+                Label(text="").grid(row=i + 1, column=j + 2)
 
-            button = Button(self.table, text="View Marks", state=state,
-                            command=lambda x=i: self.view_marks(x))
-            button.grid(row=i + 1, column=j + 2)
 
 
 
@@ -142,10 +112,9 @@ class StudentWindow(MenuScreen):
         marks = []
 
         for result in results:
-            marks.append(result)
+            marks.append({"Mark": result["Mark"]})
 
         di = MarksDialog(self.root, "Exam marks", exam, marks)
-
 
     def init_window(self):
         self.root.title("Main Menu")
