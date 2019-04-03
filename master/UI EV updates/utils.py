@@ -60,33 +60,46 @@ class MarksDialog(Dialog):
 
 
 class MenuScreen():
+    QUESTION_COLUMNS = ["TestName", "TestType", "QuestionType", "QuestionId",
+                                        "Question", "Answer1", "Answer2", "Answer3", "Answer4",
+                                        "Correct"]
 
     def __init__(self):
-        questions = []
+
         self.results = []
         self.exams = []
 
         self.exams_file = "exams.csv"
         self.results_file = "results.csv"
+        self.read_exams()
+        self.read_questions()
+        self.read_results()
 
-        # read the questions file
+    def read_questions(self):
+        '''
+        read the questions file
+        '''
+
+        questions = []
         with open("questions.csv") as f:
-            reader = csv.DictReader(f, ["TestName", "TestType", "QuestionType", "QuestionId",
-                                        "Question", "Answer1", "Answer2", "Answer3", "Answer4",
-                                        "Correct", "Selected"])
+            reader = csv.DictReader(f,self.QUESTION_COLUMNS )
             for question in reader:
                 questions.append(question)
 
         self.all_questions = questions
 
-        # read the exame file
 
+    def read_exams(self):
+        # read the exame file
+        self.exams.clear()
         with open(self.exams_file) as f:
             reader = csv.DictReader(f)
             for exam in reader:
                 self.exams.append(exam)
 
+    def read_results(self):
         # read the results file.
+        self.results.clear()
         with open(self.results_file) as f:
             reader = csv.DictReader(f)
             for result in reader:

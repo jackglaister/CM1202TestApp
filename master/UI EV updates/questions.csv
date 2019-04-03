@@ -1,4 +1,4 @@
-TestName,TestType,QuestionType,QuestionId,Question,Answer1,Answer2,Answer3,Answer4,Correct,Selected
+TestName,TestType,QuestionType,QuestionId,Question,Answer1,Answer2,Answer3,Answer4,Correct
 Web Applications,formative,mcq,Q0001,What does HTML stand for?,Home Tool Markup Language,Hyperlinks and Text Markup Language,None of the above,Hyper Text Markup Language,1,
 Web Applications,formative,mcq,Q0002,Where in an HTML document is the correct place to refer to an external style sheet?,At the end of the document,At the top of the document,In the section,Anywhere it's fine,1,
 Web Applications,formative,mcq,Q0003,Which input type defines a slider control?,controls ,search,slider,range,1,

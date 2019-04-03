@@ -34,12 +34,6 @@ class StudentWindow(MenuScreen):
             lb = Label(self.table, text=column)
             lb.grid(row=0, column=i, sticky=W)
 
-        with open(self.results_file) as f:
-            reader = csv.DictReader(f)
-            for line in reader:
-                if line['StudentId'] == self.user:
-                    self.results.append(line)
-
         for i, parts in enumerate(self.exams):
 
             for j, (key, val) in enumerate(parts.items()):
@@ -96,9 +90,11 @@ class StudentWindow(MenuScreen):
 
         # write the summary to the results.csv file at the end of the file
         summary = [self.user, exam["TestName"], marks]
-        with open("results.csv", "a") as f:
+        with open(self.results_file, "a") as f:
             writer = csv.writer(f, delimiter=",", lineterminator="\n")
             writer.writerow(summary)
+
+        self.read_results()
 
     def view_marks(self, x):
         '''
