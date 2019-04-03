@@ -8,23 +8,18 @@ class MenuScreen():
         questions = []
 
         with open("questions.csv") as f:
-            reader = csv.DictReader(f)
+            reader = csv.DictReader(f, ["TestName", "TestType", "QuestionType", "QuestionID", "Question", "Answer1", "Answer2", "Answer3", "Answer4", "Answer5"])
             for question in reader:
                 questions.append(question)
 
         self.all_questions = questions
 
     def get_exam_questions(self, exam):
-        question_list = []
-        with open("questions.csv") as f:
-            reader = csv.reader(f)
-            for question in reader:
-                question_list.append(question)
-
         questions = []
         exam_name = exam['TestName'].lower()
-        for question in question_list:
-            q_test_name = question[0].lower().strip()
+        for question in self.all_questions:
+            print(question)
+            q_test_name = question['TestName'].lower().strip()
             if q_test_name == exam_name:
                 questions.append(question)
 
@@ -68,15 +63,14 @@ class TakeTest(Dialog):
         self.row += 1
 
         for i, question in enumerate(questions):
-            print(question)
-            Label(self, text=question[4]).grid(row=self.row, column=0, sticky=W)
+            Label(self, text=question["Question"]).grid(row=self.row, column=0, sticky=W)
             self.row += 1
 
-            if question[2] == "mcq":
+            if question["QuestionType"] == "mcq":
                 self.answervar[i].set(None)
                 for ans in range(1, 5):
                     Radiobutton(self, variable=self.answervar[i],
-                                text=question[4 + ans], value=ans).grid(row=self.row, column=0, sticky=W)
+                                text=question["Answer{}".format(ans)], value=ans).grid(row=self.row, column=0, sticky=W)
 
                     self.row += 1
             else:
