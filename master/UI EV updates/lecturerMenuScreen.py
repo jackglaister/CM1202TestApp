@@ -12,7 +12,6 @@ class LecturerWindow(MenuScreen):
         self.table = Frame(self.root)
         self.rows = 0;
 
-
         self.columns = ["Test Name","Test Type",""]
 #        self.root.pack(padx=20, pady=50)
         self.table.grid(row=0, column=1, columnspan=2)
@@ -27,21 +26,27 @@ class LecturerWindow(MenuScreen):
                     Label(self.table, text=val, bd=3).grid(row=i+1, column=j, padx=10)
 
                 button = Button(self.table, text="View Marks", command=lambda x=i: self.view_marks(x))
-                button.grid(row=i+1, column=j+1, pady = 10, padx = 20)
+                button.grid(row=i+1, column=j+1, pady = 10, padx=20)
 
                 button = Button(self.table, text="Edit Test", command=lambda x=i: self.edit_test(x))
-                button.grid(row=i + 1, column=j + 2)
+                button.grid(row=i+1, column=j+2)
 
             self.rows = i + 1
 
         logoutButton = Button(self.root, text="Log Out", command=frame.quit)
-        logoutButton.grid(row=1, column=0)
+        logoutButton.grid(row=1, column=1)
 
         newTestButton = Button(self.root, text="Create a new test")
-        newTestButton.grid(row=1, column=3, pady=10, padx=25)
+        newTestButton.grid(row=1, column=2, pady=10, padx=25)
+
+        statsButton = Button(self.root, text="See statistics for tests")
+        statsButton.grid(row=1, column=3, pady=10, padx=25)
 
     def view_marks(self, x):
         print("take the tet for row ", x)
+
+        exam = self.exams[x]
+        questions = self.get_exam_questions(exam)
 
     def view_test(self, x):
         print("View test", x)
@@ -76,12 +81,16 @@ class LecturerWindow(MenuScreen):
         with open("questions.csv", "w") as f:
             fields = list(q[0].keys())
             writer = csv.DictWriter(f, fieldnames=fields, delimiter=',', lineterminator='\n')
-
+            writer.writeheader()
             for question in self.all_questions:
                 for edited_question in q:
                     if question['QuestionId'] == edited_question['QuestionId']:
-                        question['Correct'] = edited_question['Correct']
-                        break;
+                        try:
+                            question['Correct'] = edited_question['Selected']
+                            del question['Selected']
+                            break
+                        except KeyError:
+                            pass
                 writer.writerow(question)
 def main():
     root = Tk()

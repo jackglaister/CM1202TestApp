@@ -103,21 +103,22 @@ class StudentWindow(MenuScreen):
         exam = self.exams[x]
 
         questions = self.get_exam_questions(exam)
+        q = questions[:]
+        t = TakeTest(self.root, exam["TestName"], exam, q)
 
-        t = TakeTest(self.root, exam["TestName"], exam, questions)
-        q = t.questions
 
         with open("test_answers.csv", "a") as f:
-            fields = list(q[0].keys())
-            fields.append("Student")
-            fields.append("Markes")
+            fields = ["StudentId","QuestionId","Answer","Correct"]
             writer = csv.DictWriter(f, fieldnames=fields, delimiter=',', lineterminator='\n')
-            for question in q:
-                question['Student'] = self.user
-                #writer.writeheader()
+            #writer.writeheader()
+            for i, question in enumerate(q):
+                answer = t.answervar[i].get()
+                correct = answer.strip().lower() == question["Correct"].strip().lower()
+                result = {"StudentId":  self.user, "QuestionId": question["QuestionId"],
+                          "Answer": answer, "Correct": correct}
 
                 # the checking answer part comes here as described below
-                writer.writerow(question)
+                writer.writerow(result)
 
 
         # to finish tis. we need to compare gainst the professors answers.
@@ -138,6 +139,20 @@ class StudentWindow(MenuScreen):
 
 
         di = MarksDialog(self.root, "Exam marks", exam, marks)
+
+    def display_mark(self, x):
+            #         print("View marks for test", x)
+            #
+            #         with open("test_answers.csv") as f:
+            #             reader = csv.DictReader(f)
+            #             #for i, parts in enumerate(reader):
+            #                # self.exams.append(parts)
+            #                # for j, (key, val) in enumerate(parts.items()):
+                    total_score = 0
+                    if answer == "True":
+                        total_score += 1
+                        return total_score
+
 
     def init_window(self):
         self.root.title("Main Menu")

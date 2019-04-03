@@ -46,7 +46,7 @@ class TakeTest(Dialog):
 
         for i in range(len(self.questions)):
             answer = self.answervar[i].get()
-            self.questions[i]['Correct'] = answer
+            self.questions[i]['Selected'] = answer
 
     def body(self, master):
         exam = self.exam
