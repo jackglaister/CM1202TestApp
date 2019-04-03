@@ -6,13 +6,32 @@ class MenuScreen():
 
     def __init__(self):
         questions = []
+        self.results = []
+        self.exams = []
 
+        self.exams_file = "exams.csv"
+        self.results_file = "results.csv"
+
+        # read the questions file
         with open("questions.csv") as f:
             reader = csv.DictReader(f)
             for question in reader:
                 questions.append(question)
 
         self.all_questions = questions
+
+        # read the exame file
+
+        with open(self.exams_file) as f:
+            reader = csv.DictReader(f)
+            for exam in reader:
+                self.exams.append(exam)
+
+        # read the results file.
+        with open(self.results_file) as f:
+            reader = csv.DictReader(f)
+            for result in reader:
+                self.results.append(result)
 
     def get_exam_questions(self, exam):
         questions = []
@@ -23,6 +42,38 @@ class MenuScreen():
                 questions.append(question)
 
         return questions
+
+
+    def get_results(self, exam=None, student=None):
+        if exam == None and student == None:
+            return self.results
+
+        if exam:
+            # filtr by exam
+            results = []
+            exam = exam["TestName"].strip().lower()
+
+            for result in self.results:
+                result_for = result["TestName"].strip().lower()
+                if result_for == exam:
+                    if student:
+                        # situation where we want to filter by both the student and the
+                        # exam
+                        student = student.strip().lower()
+                        if result["StudentId"] == student:
+                            results.append(result)
+                    else:
+                        results.append(result)
+        else:
+            # filter by student
+            results = []
+            student = student.strip().lower()
+            for result in self.results:
+                if result["StudentId"] == student:
+                    results.append(result)
+
+        return results
+
 
 class TakeTest(Dialog):
     """

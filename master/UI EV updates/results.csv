@@ -1,26 +1,8 @@
-StudentID,Mark,TestName
-c10001,10,Web applications
-c10002,9,Web applications
-c10003,5,Web applications
-c10004,9,Web applications
-c10005,6,Web applications
-c10006,9,Web applications
-c10007,6,Web applications
-c10008,5,Web applications
-c10009,7,Web applications
-c10010,8,OOP test
-c10011,6,Web applications
-c10012,5,Web applications
-c10013,6,Web applications
-c10014,6,Web applications
-c10015,10,Web applications
-c10016,7,Web applications
-c10017,4,OOP test
-c10018,7,Web applications
-c10019,5,Web applications
-c10020,7,Web applications
-c10021,5,OOP test
-c10022,5,Web applications
-c10023,7,Web applications
-c10024,9,Web applications
-c10025,8,Web applications
+StudentId,TestName,Mark
+c10002,Web Applications,0
+
+c10002,Web Applications,2
+
+c10002,Web Applications,0
+c10002,Front End test,1
+c10002,Front End test,6

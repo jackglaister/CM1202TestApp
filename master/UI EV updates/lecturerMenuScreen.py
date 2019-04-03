@@ -15,7 +15,7 @@ class LecturerWindow(MenuScreen):
         self.columns = ["Test Name","Test Type",""]
 #        self.root.pack(padx=20, pady=50)
         self.table.grid(row=0, column=1, columnspan=2)
-        self.exams = []
+
         frame = Frame()
 
         with open("exams.csv") as f:

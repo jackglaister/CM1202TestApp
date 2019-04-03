@@ -26,11 +26,13 @@ class MarksDialog(Dialog):
         Label(self, text=exam['TestType']).grid(row=self.row, column=1)
         self.row += 1
 
-        for i, mark in enumerate(marks):
-            Label(self, text="Attempt {0}: ".format(i + 1)).grid(row=self.row, column=0)
-            Label(self, text="{}".format(mark["Mark"])).grid(row=self.row, column=1)
-            self.row +=1
-
+        if marks:
+            for i, mark in enumerate(marks):
+                Label(self, text="Attempt {0}: ".format(i + 1)).grid(row=self.row, column=0)
+                Label(self, text="{}".format(mark["Mark"])).grid(row=self.row, column=1)
+                self.row +=1
+        else:
+            Label(self,text="Not Atempted").grid(row=self.row, column=0, columnspan=2)
 
 
 
@@ -40,17 +42,11 @@ class StudentWindow(MenuScreen):
         self.root = root
         self.user = user
 
-        self.columns = ["Test Name","Test Type","", "Marks", "Attempts"]
-
-        self.results = []
-        self.exams = []
+        self.columns = ["Test Name", "Test Type", "Test Due", "Results Released"]
 
         self.table = Frame(self.root)
         self.rows = 0;
         self.table.grid(row=0, column=1, columnspan=2)
-
-        self.exams_file = "exams.csv"
-        self.results_file = "results.csv"
 
         frame = Frame(bg="lightblue")
 
@@ -74,25 +70,29 @@ class StudentWindow(MenuScreen):
         with open(self.results_file) as f:
             reader = csv.DictReader(f)
             for line in reader:
-                if line['StudentID'] == self.user:
+                if line['StudentId'] == self.user:
                     self.results.append(line)
 
-        with open(self.exams_file) as f:
-            reader = csv.DictReader(f)
-            for i, parts in enumerate(reader):
+        for i, parts in enumerate(self.exams):
 
-                for j, (key, val) in enumerate(parts.items()):
-                    Label(self.table, text=val).grid(row=i+1, column=j, padx=1)
+            for j, (key, val) in enumerate(parts.items()):
+                Label(self.table, text=val).grid(row=i+1, column=j, padx=1)
 
-                button = Button(self.table, text="Take Test", command=lambda x=i: self.take_test(x))
-                button.grid(row=i+1, column=j+1,  pady = 10, padx = 20)
+            button = Button(self.table, text="Take Test", command=lambda x=i: self.take_test(x))
+            button.grid(row=i+1, column=j+1,  pady = 10, padx = 20)
 
-                button = Button(self.table, text="View Marks", command=lambda x=i: self.view_marks(x))
-                button.grid(row=i + 1, column=j + 2)
+            if parts["ResultsRelease"]:
+                state = "normal"
+            else:
+                state = DISABLED
 
-                self.exams.append(parts)
+            button = Button(self.table, text="View Marks", state=state,
+                            command=lambda x=i: self.view_marks(x))
+            button.grid(row=i + 1, column=j + 2)
 
-            self.rows = i + 1
+
+
+        self.rows = i + 1
 
     def take_test(self, x):
         '''
@@ -106,6 +106,7 @@ class StudentWindow(MenuScreen):
         q = questions[:]
         t = TakeTest(self.root, exam["TestName"], exam, q)
 
+        marks = 0
 
         with open("test_answers.csv", "a") as f:
             fields = ["StudentId","QuestionId","Answer","Correct"]
@@ -117,41 +118,33 @@ class StudentWindow(MenuScreen):
                 result = {"StudentId":  self.user, "QuestionId": question["QuestionId"],
                           "Answer": answer, "Correct": correct}
 
+                if correct:
+                    marks += 1
+
                 # the checking answer part comes here as described below
                 writer.writerow(result)
 
+        # write the summary to the results.csv file at the end of the file
+        summary = [self.user, exam["TestName"], marks]
+        with open("results.csv", "a") as f:
+            writer = csv.writer(f, delimiter=",", lineterminator="\n")
+            writer.writerow(summary)
 
-        # to finish tis. we need to compare gainst the professors answers.
-        # that's in the Correct field for each question in self.questions
-
-        # so each question that's been attemped (for question in q) needs to be
-        # compared against the corresponding entry in all_questions, we will then set a
-        # marks fields in the question 1 for correct (matches lectureres choice) 1 for
-        # incorrect - does not match the lecturers choice
     def view_marks(self, x):
-        print("View marks for row", x)
-        exam = self.exams[x]
-        marks = []
-        exam_name = exam['TestName'].lower()
-        for result in self.results:
-            if result['TestName'].lower() == exam_name:
-                marks.append(result)
+        '''
+        view the marks for an exam
 
+        :param x:
+        :return:
+        '''
+        exam = self.exams[x]
+        results = self.get_results(exam, self.user)
+        marks = []
+
+        for result in results:
+            marks.append(result)
 
         di = MarksDialog(self.root, "Exam marks", exam, marks)
-
-    def display_mark(self, x):
-            #         print("View marks for test", x)
-            #
-            #         with open("test_answers.csv") as f:
-            #             reader = csv.DictReader(f)
-            #             #for i, parts in enumerate(reader):
-            #                # self.exams.append(parts)
-            #                # for j, (key, val) in enumerate(parts.items()):
-                    total_score = 0
-                    if answer == "True":
-                        total_score += 1
-                        return total_score
 
 
     def init_window(self):
