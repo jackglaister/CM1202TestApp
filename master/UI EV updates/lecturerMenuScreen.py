@@ -86,7 +86,7 @@ class LecturerWindow(MenuScreen):
         with open("questions.csv", "w") as f:
             fields = list(q[0].keys())
             writer = csv.DictWriter(f, fieldnames=fields, delimiter=',', lineterminator='\n')
-            writer.writeheader()
+          #  writer.writeheader()
             for question in self.all_questions:
                 for edited_question in q:
                     if question['QuestionId'] == edited_question['QuestionId']:

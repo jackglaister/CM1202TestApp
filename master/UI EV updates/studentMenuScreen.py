@@ -130,4 +130,4 @@ def main(user):
     root.mainloop()
 
 if __name__ == '__main__':
-    main(user="c10002")
+    main(user="c10004")

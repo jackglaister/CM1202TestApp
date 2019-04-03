@@ -1,5 +1,0 @@
-﻿Q0001,1,HTML comments start with <!-- and end with -->. Answer with True or False,,,,TRUE
-Q0002,2,"Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",longdesc,title,src,alt
-Q0003,3,The HTML <canvas> element is used to:,display database records  ,create draggable elements,manipulate data in MySQL,draw graphics
-Q0004,4,What is the correct HTML for making a drop-down list?,<list>,"<input type=""list"">","<input type=""dropdown"">",<select>
-Q0005,5,What is the correct HTML for making a text input field?,"<input type=""textfield"">","<textinput type=""text"">",<textfield>,"<input type=""text"">  "
