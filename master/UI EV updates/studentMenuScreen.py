@@ -108,6 +108,7 @@ class StudentWindow(MenuScreen):
         q = t.questions
 
         with open("test_answers.csv", "a") as f:
+            print(q)
             fields = list(q[0].keys())
             fields.append("Student")
             fields.append("Markes")
