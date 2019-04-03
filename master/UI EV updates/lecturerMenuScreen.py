@@ -48,6 +48,7 @@ class LecturerWindow(MenuScreen):
 
 
     def edit_test(self, x):
+        print(x)
         '''
         Edit test.
 
