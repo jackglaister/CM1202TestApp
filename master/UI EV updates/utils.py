@@ -71,7 +71,7 @@ class MenuScreen():
 
         # read the questions file
         with open("questions.csv") as f:
-            reader = csv.DictReader(f)
+            reader = csv.DictReader(f, ["TestName", "TestType", "QuestionType", "QuestionID", "Question", "Answer1", "Answer2", "Answer3", "Answer4", "Answer5"])
             for question in reader:
                 questions.append(question)
 
