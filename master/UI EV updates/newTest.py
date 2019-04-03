@@ -1,3 +1,4 @@
+import random
 from tkinter import *
 from dialogwindow import Dialog
 
@@ -63,15 +64,16 @@ class NewMCQ(Dialog):
         Entry(self, textvariable=self.answer).grid(row=self.row, column=1)
 
 
-class TestForm():
+class TestForm(Dialog):
     def __init__(self, root):
         self.root = root
+        super().__init__(self.root,"Create new test")
         root.wm_title("Create New Test")
         self.title = StringVar()
         self.dueDate = StringVar()
         self.releaseDate = StringVar()
         self.testType = StringVar()
-
+        self.questions = []
         self.testType.set(None)
         frame = Frame(self.root)
         self.frame = frame
@@ -104,15 +106,21 @@ class TestForm():
 
 
     def multiple_choice(self):
-        print("Multiple")
+        '''
+        Creates a new multiple choice question for the current exam.
+        :return:
+        '''
         mcq = NewMCQ(self.root)
-        print("MCQ dialog closed", mcq.question.get())
-        # typically the code to save to a database or file would be here.
-        for i in range(len(mcq.labels)):
-            print("Choice ", i + 1, mcq.vars[i].get())
+        try:
+            question = {"Answer{0}".format(i + 1):mcq.vars[i].get() for i in range(4)}
+            question["Correct"] = int(mcq.answer.get())
+            question["QuestionId"] = "q{0}".format(random.randint(1, 1000000))
+            question["Question"] = mcq.question.get()
 
-        print("correect answer is", mcq.answer.get())
-
+            self.questions.append(question)
+        except ValueError:
+            print("MCQ question is not valid"
+                  )
     def text_answer(self):
         print("Text question")
         taq = TextAnswerDialog(self.root)
@@ -131,6 +139,21 @@ class TestForm():
             except ValueError:
                 print("The user did not enter a value for number of attempts")
 
+
+
+    def ok(self, event=None):
+        '''
+        Over ride the ok event to update the test
+        :param event:
+        :return:
+        '''
+        super().ok(event)
+
+        print("sdkjfkajfkjdklfa")
+
+        for i in range(len(self.questions)):
+            answer = self.answervar[i].get()
+            self.questions[i]['Selected'] = answer
 
 
 
