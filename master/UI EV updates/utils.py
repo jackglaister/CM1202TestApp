@@ -2,6 +2,12 @@ from tkinter import *
 import csv
 from dialogwindow import Dialog
 
+EXAM_COLUMNS = ["TestName","TestType","DueDate","ResultsRelease"]
+
+QUESTION_COLUMNS = ["TestName", "TestType", "QuestionType", "QuestionId",
+                                        "Question", "Answer1", "Answer2", "Answer3", "Answer4",
+                                        "Correct"]
+
 
 class MarksDialog(Dialog):
     '''
@@ -60,9 +66,6 @@ class MarksDialog(Dialog):
 
 
 class MenuScreen():
-    QUESTION_COLUMNS = ["TestName", "TestType", "QuestionType", "QuestionId",
-                                        "Question", "Answer1", "Answer2", "Answer3", "Answer4",
-                                        "Correct"]
 
     def __init__(self):
 
@@ -82,7 +85,7 @@ class MenuScreen():
 
         questions = []
         with open("questions.csv") as f:
-            reader = csv.DictReader(f,self.QUESTION_COLUMNS )
+            reader = csv.DictReader(f, QUESTION_COLUMNS )
             for question in reader:
                 questions.append(question)
 
@@ -147,15 +150,25 @@ class MenuScreen():
         return results
 
 
+    def write_exams(self):
+        with open(self.exams_file, "w") as f:
+            writer = csv.DictWriter(f, fieldnames=EXAM_COLUMNS, delimiter=',', lineterminator='\n')
+            writer.writeheader()
+            for exam in self.exams:
+                writer.writerow(exam)
+
 class TakeTest(Dialog):
     """
     Dialog to display the test which needs to be taken by the student
 
     """
-    def __init__(self, parent, title, exam, questions):
+    def __init__(self, parent, title, exam, questions, edit=False):
         self.exam = exam
         self.questions = questions
         self.answervar = [StringVar() for x in range(len(questions))]
+        self.questionvar = StringVar()
+        self.testType = StringVar()
+        self.edit = edit
 
         super().__init__(parent, title)
 
@@ -177,11 +190,22 @@ class TakeTest(Dialog):
         self.row = 0
 
         Label(self, text="Exam: ").grid(row=self.row, column=0, sticky=W)
-        Label(self, text=exam['TestName']).grid(row=self.row, column=1, sticky=W)
+        if self.edit:
+            self.questionvar.set(exam['TestName'])
+            Entry(self, textvar=self.questionvar).grid(row=self.row, column=1, sticky=W)
+        else:
+            Label(self, text=exam['TestName']).grid(row=self.row, column=1, sticky=W)
         self.row += 1
 
         Label(self, text="Exam Type: ").grid(row=self.row, column=0, sticky=W)
-        Label(self, text=exam['TestType']).grid(row=self.row, column=1, sticky=W)
+        if self.edit:
+            self.testType.set(exam["TestType"])
+            Radiobutton(self, text="Formative", value="formative",
+                        variable=self.testType).grid(row=self.row, column=0)
+            Radiobutton(self, text="Summative", value="summative",
+                        variable=self.testType).grid(row=self.row, column=1)
+        else:
+            Label(self, text=exam['TestType']).grid(row=self.row, column=1, sticky=W)
         self.row += 1
 
         for i, question in enumerate(questions):
@@ -189,6 +213,9 @@ class TakeTest(Dialog):
             self.row += 1
 
             if question["QuestionType"] == "mcq":
+ #               if self.edit:
+ #                   self.answervar[i] = question["Correct"]
+ #               else:
                 self.answervar[i].set(None)
                 for ans in range(1, 5):
                     Radiobutton(self, variable=self.answervar[i],
@@ -196,5 +223,7 @@ class TakeTest(Dialog):
 
                     self.row += 1
             else:
+#                if self.edit:
+#                    self.answervar[i].set(question["Correct"])
                 Entry(self, textvar=self.answervar[i]).grid(row=self.row, column=1, sticky=W+E+N+S)
                 self.row += 1

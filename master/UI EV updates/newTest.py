@@ -1,7 +1,8 @@
 import random
+import csv
 from tkinter import *
 from dialogwindow import Dialog
-
+from utils import QUESTION_COLUMNS, EXAM_COLUMNS
 
 class NumAttemptsDialog(Dialog):
     '''
@@ -26,7 +27,6 @@ class TextAnswerDialog(Dialog):
         self.row += 1
 
         self.question = StringVar()
-        self.answer = StringVar()
         self.correct_answer = StringVar()
 
 
@@ -67,42 +67,46 @@ class NewMCQ(Dialog):
 class TestForm(Dialog):
     def __init__(self, root):
         self.root = root
-        super().__init__(self.root,"Create new test")
-        root.wm_title("Create New Test")
-        self.title = StringVar()
+        self.questions = []
+        self.exam = StringVar()
         self.dueDate = StringVar()
         self.releaseDate = StringVar()
         self.testType = StringVar()
-        self.questions = []
+
+        super().__init__(self.root, "Create new test")
+
+    def body(self, master):
+
+
         self.testType.set(None)
         frame = Frame(self.root)
         self.frame = frame
 
-        row = 0
-        Label(root, text="Title").grid(row=row, column=0)
-        Entry(root, textvariable=self.title).grid(row=row, column=1)
+        row = self.row
+        Label(self, text="Title").grid(row=row, column=0)
+        Entry(self, textvariable=self.exam).grid(row=row, column=1)
 
         row +=1
-        Radiobutton(root, text="Formative", command=self.on_checked, value="f",
+        Radiobutton(self, text="Formative", command=self.on_checked, value="formative",
                     variable=self.testType).grid(row=row, column=0)
-        Radiobutton(root, text="Summative", command=self.on_checked, value="s",
+        Radiobutton(self, text="Summative", command=self.on_checked, value="summative",
                     variable=self.testType).grid(row=row, column=1)
 
         row += 1
-        Label(root, text="Due Date").grid(row=row, column=0)
-        Entry(root, textvariable=self.dueDate).grid(row=row, column=1)
+        Label(self, text="Due Date").grid(row=row, column=0)
+        Entry(self, textvariable=self.dueDate).grid(row=row, column=1)
 
         row += 1
-        Label(root, text="Release Date").grid(row=row, column=0)
-        Entry(root, textvariable=self.releaseDate).grid(row=row, column=1)
+        Label(self, text="Release Date").grid(row=row, column=0)
+        Entry(self, textvariable=self.releaseDate).grid(row=row, column=1)
 
         row += 1
-        Button(root, text="New multiple choice", command=self.multiple_choice).grid(row=row, column=0)
-        Button(root, text="New text answer", command=self.text_answer).grid(row=row, column=1)
+        Button(self, text="New multiple choice", command=self.multiple_choice).grid(row=row, column=0)
+        Button(self, text="New text answer", command=self.text_answer).grid(row=row, column=1)
 
         row += 1
-        self.submit = Button(root, text="Submit")
-        self.submit.grid(row=row, column=0)
+
+        self.row = row
 
 
     def multiple_choice(self):
@@ -116,19 +120,29 @@ class TestForm(Dialog):
             question["Correct"] = int(mcq.answer.get())
             question["QuestionId"] = "q{0}".format(random.randint(1, 1000000))
             question["Question"] = mcq.question.get()
+            question["QuestionType"] = "mcq"
 
             self.questions.append(question)
         except ValueError:
-            print("MCQ question is not valid"
-                  )
+            print("MCQ question is not valid")
+
+
     def text_answer(self):
-        print("Text question")
+        '''
+        Creates a new question with a simple text answer
+        '''
+
         taq = TextAnswerDialog(self.root)
-        print("TextAnswerDialog closed", taq.question.get())
+        if taq.applied:
+            answer = taq.correct_answer.get()
+            question = {"Question": taq.question.get(),
+                        "Answer1": answer,
+                        "QuestionType": "tax",
+                        "Correct": answer }
 
-        print("Space for the answer:", taq.answer.get())
+            question["QuestionId"] = "q{0}".format(random.randint(1, 1000000))
 
-        # pop up a dialog for a text answer
+            self.questions.append(question)
 
     def on_checked(self):
         self.num_attempts = 1
@@ -140,7 +154,6 @@ class TestForm(Dialog):
                 print("The user did not enter a value for number of attempts")
 
 
-
     def ok(self, event=None):
         '''
         Over ride the ok event to update the test
@@ -148,14 +161,17 @@ class TestForm(Dialog):
         :return:
         '''
         super().ok(event)
+        with open("questions.csv", "a") as f:
+            writer = csv.DictWriter(f, fieldnames=QUESTION_COLUMNS, delimiter=',', lineterminator='\n')
+            for question in self.questions:
+                question["TestType"] = self.testType.get()
+                question["TestName"] = self.exam.get()
+                writer.writerow(question)
 
-        print("sdkjfkajfkjdklfa")
-
-        for i in range(len(self.questions)):
-            answer = self.answervar[i].get()
-            self.questions[i]['Selected'] = answer
-
-
+        with open("exams.csv","a") as f:
+            writer = csv.DictWriter(f, fieldnames=EXAM_COLUMNS, delimiter=',', lineterminator='\n')
+            writer.writerow({"TestName": self.exam.get(), "TestType" : self.testType.get(),
+                             "DueDate": self.dueDate.get(), "ResultsRelease": self.releaseDate.get()})
 
 def main():
 

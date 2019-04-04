@@ -3,7 +3,8 @@ import os
 
 class Dialog(Toplevel):
 
-    def __init__(self, parent, title = None):
+    def __init__(self, parent, title=None):
+        self.applied = False
         self.row = 0
         Toplevel.__init__(self, parent)
         self.transient(parent)
@@ -88,5 +89,5 @@ class Dialog(Toplevel):
         return 1 # override
 
     def apply(self):
-
+        self.applied = True
         pass # override
