@@ -1,7 +1,9 @@
 from tkinter import *
+from loginScreen import *
 import csv
 from dialogwindow import Dialog
 from utils import MenuScreen, TakeTest, MarksDialog
+
 
 class StudentWindow(MenuScreen):
     def __init__(self, root, user):
@@ -18,6 +20,7 @@ class StudentWindow(MenuScreen):
         frame = Frame(bg="lightblue")
 
         self.load_student_data()
+
         logoutButton = Button(self.root, text="Log Out", command=frame.quit)
         logoutButton.grid(row=1, column=0)
 
@@ -54,8 +57,6 @@ class StudentWindow(MenuScreen):
                 Label(text="").grid(row=i + 1, column=j + 2)
 
 
-
-
         self.rows = i + 1
 
     def take_test(self, x):
@@ -69,32 +70,32 @@ class StudentWindow(MenuScreen):
         questions = self.get_exam_questions(exam)
         q = questions[:]
         t = TakeTest(self.root, exam["TestName"], exam, q)
+        if t.applied:
+            marks = 0
 
-        marks = 0
+            with open("test_answers.csv", "a") as f:
+                fields = ["StudentId","QuestionId","Answer","Correct"]
+                writer = csv.DictWriter(f, fieldnames=fields, delimiter=',', lineterminator='\n')
+                #writer.writeheader()
+                for i, question in enumerate(q):
+                    answer = t.answervar[i].get()
+                    correct = answer.strip().lower() == question["Correct"].strip().lower()
+                    result = {"StudentId":  self.user, "QuestionId": question["QuestionId"],
+                              "Answer": answer, "Correct": correct}
 
-        with open("test_answers.csv", "a") as f:
-            fields = ["StudentId","QuestionId","Answer","Correct"]
-            writer = csv.DictWriter(f, fieldnames=fields, delimiter=',', lineterminator='\n')
-            #writer.writeheader()
-            for i, question in enumerate(q):
-                answer = t.answervar[i].get()
-                correct = answer.strip().lower() == question["Correct"].strip().lower()
-                result = {"StudentId":  self.user, "QuestionId": question["QuestionId"],
-                          "Answer": answer, "Correct": correct}
+                    if correct:
+                        marks += 1
 
-                if correct:
-                    marks += 1
+                    # the checking answer part comes here as described below
+                    writer.writerow(result)
 
-                # the checking answer part comes here as described below
-                writer.writerow(result)
+            # write the summary to the results.csv file at the end of the file
+            summary = [self.user, exam["TestName"], marks]
+            with open(self.results_file, "a") as f:
+                writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                writer.writerow(summary)
 
-        # write the summary to the results.csv file at the end of the file
-        summary = [self.user, exam["TestName"], marks]
-        with open(self.results_file, "a") as f:
-            writer = csv.writer(f, delimiter=",", lineterminator="\n")
-            writer.writerow(summary)
-
-        self.read_results()
+            self.read_results()
 
     def view_marks(self, x):
         '''
@@ -114,8 +115,6 @@ class StudentWindow(MenuScreen):
 
     def init_window(self):
         self.root.title("Main Menu")
-        #self.pack(fill=NONE, expand=True)
-
 
 
 def main(user):
@@ -126,4 +125,6 @@ def main(user):
     root.mainloop()
 
 if __name__ == '__main__':
-    main(user="c10004")
+    #main(user="c10004")
+    login = Login()
+    login.login_screen.mainloop()

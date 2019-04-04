@@ -1,19 +1,20 @@
 TestName,TestType,QuestionType,QuestionId,Question,Answer1,Answer2,Answer3,Answer4,Correct
-Web Applications,formative,mcq,Q0001,What does HTML stand for?,Home Tool Markup Language,Hyperlinks and Text Markup Language,None of the above,Hyper Text Markup Language,1
-Web Applications,formative,mcq,Q0002,Where in an HTML document is the correct place to refer to an external style sheet?,At the end of the document,At the top of the document,In the section,Anywhere it's fine,1
-Web Applications,formative,mcq,Q0003,Which input type defines a slider control?,controls ,search,slider,range,1
-Web Applications,formative,mcq,Q0004,What is a cell padding?,Used to set space between cells,Used to separate cells walls from their contents,Both a and b above, Used to provide width to a cell,1
-Web Applications,formative,mcq,Q0005,How do you change the left margin of an element?,text-indent,margin:,margin-left,indent:,1
-Web Applications,formative,mcq,Q0006,Which CSS property controls the text size?,text-size,text-style,font-size,font-style,1
-Front End test,summative,tax,Q1001,Are CSS property names case-sensitive?Answer with yes or no,,,,,hi
+Web Applications,formative,mcq,Q0001,What does HTML stand for?,Home Tool Markup Language,Hyperlinks and Text Markup Language,None of the above,Hyper Text Markup Language,None
+Web Applications,formative,mcq,Q0002,Where in an HTML document is the correct place to refer to an external style sheet?,At the end of the document,At the top of the document,In the section,Anywhere it's fine,None
+Web Applications,formative,mcq,Q0003,Which input type defines a slider control?,controls ,search,slider,range,None
+Web Applications,formative,mcq,Q0004,What is a cell padding?,Used to set space between cells,Used to separate cells walls from their contents,Both a and b above, Used to provide width to a cell,None
+Web Applications,formative,mcq,Q0005,How do you change the left margin of an element?,text-indent,margin:,margin-left,indent:,None
+Web Applications,formative,mcq,Q0006,Which CSS property controls the text size?,text-size,text-style,font-size,font-style,None
+Front End test,summative,tax,Q1001,Are CSS property names case-sensitive?Answer with yes or no,,,,,
 Front End test,summative,mcq,Q1002,What is the use of the only selector?,Stops older browsers from parsing the remainder of the selector,Apply the style for screen only and ignore the device max-width,Both options,It does nothing,1
 Front End test,summative,mcq,Q1003,How can you clear a floated element?,Clear:both,Press the delete key,Del tag,Strike tag,1
 Front End test,summative,mcq,Q1004,Which of the following is described as a collection of images put in a single image?,Float,Align,Sprite,Image,1
 Front End test,summative,mcq,Q1005,A collection of data containing both properties and methods is called:,tag,selector,object,class,1
 Front End test,summative,mcq,Q1006,What should be the very last thing in an HTML document?,the heading,title,body,doc type,1
-OOP test,formative,mcq,Q2001,What can represent an object in real world? Please select one of the following:,Something tangible - like a computer,A process - like an engine test,A role - like a doctor,All the above,1
-OOP test,formative,tax,Q2002,What property of a class describes a range of values that instances of the property may hold?,attribute,,,,hi
-OOP test,formative,tax,Q2003,Which visibility attribute indicates that data can only be accessed within the class?,private,,,,hi
-OOP test,formative,mcq,Q2004,Which of the following is not part of OOP?,Type checking,Multitasking,Polymorphism,Information hiding,1
-OOP test,formative,mcq,Q2005,Constructors are used to:,To build a user interface,Free memory,Initialize a newly created object,To create a sub class,1
-OOP test,formative,mcq,Q2006,An object that has more than one form is referred to as an:,Inheritance, Interface,Abstract class,Polymorphism,1
+OOP test,formative,mcq,Q2001,What can represent an object in real world? Please select one of the following:,Something tangible - like a computer,A process - like an engine test,A role - like a doctor,All the above,None
+OOP test,formative,tax,Q2002,What property of a class describes a range of values that instances of the property may hold?,attribute,,,,
+OOP test,formative,tax,Q2003,Which visibility attribute indicates that data can only be accessed within the class?,private,,,,
+OOP test,formative,mcq,Q2004,Which of the following is not part of OOP?,Type checking,Multitasking,Polymorphism,Information hiding,None
+OOP test,formative,mcq,Q2005,Constructors are used to:,To build a user interface,Free memory,Initialize a newly created object,To create a sub class,None
+OOP test,formative,mcq,Q2006,An object that has more than one form is referred to as an:,Inheritance, Interface,Abstract class,Polymorphism,None
+new test,summative,mcq,q111821,dd,ddd,dd,dd,dd,3

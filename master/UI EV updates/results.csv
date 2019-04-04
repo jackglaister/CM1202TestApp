@@ -15,3 +15,11 @@ c10004,Web Applications,0
 c10004,Front End test,0
 c10004,OOP test,0
 c10004,Web Applications,0
+c10001,Web Applications,6
+c10001,Web Applications,6
+"['c10001', 'password', 'student', 'Will\n']",Web Applications,1
+"['c10004', 'password', 'student', 'Saif\n']",Web Applications,0
+"['c10004', 'password', 'student', 'Saif\n']",new test,0
+"['c10004', 'password', 'student', 'Saif\n']",new test,0
+c10004,new test,0
+c10004,OOP test,2

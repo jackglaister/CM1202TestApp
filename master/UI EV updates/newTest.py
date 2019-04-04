@@ -79,6 +79,7 @@ class TestForm(Dialog):
 
         self.testType.set(None)
         frame = Frame(self.root)
+
         self.frame = frame
 
         row = self.row
@@ -114,16 +115,17 @@ class TestForm(Dialog):
         :return:
         '''
         mcq = NewMCQ(self.root)
-        try:
-            question = {"Answer{0}".format(i + 1):mcq.vars[i].get() for i in range(4)}
-            question["Correct"] = int(mcq.answer.get())
-            question["QuestionId"] = "q{0}".format(random.randint(1, 1000000))
-            question["Question"] = mcq.question.get()
-            question["QuestionType"] = "mcq"
+        if mcq.applied:
+            try:
+                question = {"Answer{0}".format(i + 1):mcq.vars[i].get() for i in range(4)}
+                question["Correct"] = int(mcq.answer.get())
+                question["QuestionId"] = "q{0}".format(random.randint(1, 1000000))
+                question["Question"] = mcq.question.get()
+                question["QuestionType"] = "mcq"
 
-            self.questions.append(question)
-        except ValueError:
-            print("MCQ question is not valid")
+                self.questions.append(question)
+            except ValueError:
+                print("MCQ question is not valid")
 
 
     def text_answer(self):
@@ -159,7 +161,6 @@ class TestForm(Dialog):
         :param event:
         :return:
         '''
-        super().ok(event)
         with open("questions.csv", "a") as f:
             writer = csv.DictWriter(f, fieldnames=QUESTION_COLUMNS, delimiter=',', lineterminator='\n')
             for question in self.questions:
@@ -171,6 +172,8 @@ class TestForm(Dialog):
             writer = csv.DictWriter(f, fieldnames=EXAM_COLUMNS, delimiter=',', lineterminator='\n')
             writer.writerow({"TestName": self.exam.get(), "TestType" : self.testType.get(),
                              "DueDate": self.dueDate.get(), "ResultsRelease": self.releaseDate.get()})
+        super().ok(event)
+
 
 def main():
 

@@ -42,8 +42,8 @@ class Login():
 
 
     def login_verify(self):
-        username = "c00001" # self.username_verify.get()
-        password = "password" # self.password_verify.get()
+        username = self.username_verify.get()
+        password = self.password_verify.get()
         self.username_login_entry.delete(0, END)
         self.password_login_entry.delete(0, END)
 
@@ -56,20 +56,13 @@ class Login():
         self.user_not_found()
 
     def login_success(self, user):
-        # login_success_screen = Toplevel(self.login_screen)
-        #
-        # login_success_screen.title("Success")
-        # login_success_screen.geometry("150x100")
-        # Label(login_success_screen, text="Login Success").pack()
-        # Button(login_success_screen, text="OK", command=self.delete_login_success).pack()
-        #
-        # self.login_success_screen = login_success_screen
 
         self.login_screen.withdraw()
+        self.login_screen.destroy()
         if user[2] == 'lecturer':
             lecturerMenuScreen.main()
         else:
-            studentMenuScreen.main()
+            studentMenuScreen.main(user[0])
 
     def user_not_found(self):
 
