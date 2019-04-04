@@ -36,8 +36,6 @@ class LecturerWindow(MenuScreen):
         newTestButton = Button(self.root, text="Create a new test")
         newTestButton.grid(row=1, column=2, pady=10, padx=25)
 
-        statsButton = Button(self.root, text="See statistics for tests")
-        statsButton.grid(row=1, column=3, pady=10, padx=25)
 
     def view_marks(self, x):
 
