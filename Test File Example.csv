@@ -1,7 +1,0 @@
-testID,testName,lecturerID,deadline,releaseDate
-ST0001,Example Test,L0001,30/03/2019,19/02/2019
-questionID,type,text,answer,choices
-Q0001,1,Calculate 1+2,3,null
-Q0002,0,Out of the following which is larger than 100?,0,[120: 80: 90: 75]
-Q0003,1,Calculate 9 - 9,0,null
-Q0004,1,What single unit is equivalent to 4 bits?,nibble,null

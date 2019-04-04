@@ -2,9 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea31492-bbf8-45d4-abca-4ba5a7c1293e" name="Default Changelist" comment="update on lecturer able to edit the correct answers">
-      <change beforePath="$PROJECT_DIR$/master/UI EV updates/exams.csv" beforeDir="false" afterPath="$PROJECT_DIR$/master/UI EV updates/exams.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/UI EV updates/newTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/UI EV updates/newTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/UI EV updates/questions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/master/UI EV updates/questions.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Case WB.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test File Example.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/NewTest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/StudentMCQTestExample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/Test File Example.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/Test File.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/dialogwindow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/lecturerMenuScreen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/loginScreen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI EV updates/studentMenuScreen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI Spec.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/loginScreen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/studentMenu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VagueFunctionDesign.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vauge Function Details.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv-files/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/Test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/UI EV updates/FTquestions released.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/subroutines/000115.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/subroutines/MCQclass.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/subroutines/addQuestion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/subroutines/csvWriter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/subroutines/resultsans.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/subroutines/showStats.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/subroutines/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,32 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/master/UI EV updates/exams.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/master/UI EV updates/lecturerMenuScreen.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="65" column="22" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/master/UI EV updates/newTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="83" column="22" lean-forward="true" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+            <state relative-caret-position="245">
+              <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -78,6 +85,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/master/UI EV updates/Test File Example.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/master/UI EV updates/dialogwindow.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="536">
@@ -89,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/master/UI EV updates/questions.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="187">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -118,6 +134,7 @@
       <find>Create</find>
       <find>row</find>
       <find>QUESTION_</find>
+      <find>Test Fil</find>
     </findStrings>
     <replaceStrings>
       <replace>self.row</replace>
@@ -179,6 +196,11 @@
             <path>
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="Documents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="master" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -186,11 +208,6 @@
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="master" type="462c0819:PsiDirectoryNode" />
               <item name="UI EV updates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="subroutines" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -536,13 +553,6 @@
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
     <entry file="file://$PROJECT_DIR$/master/UI EV updates/CSV.CSV" />
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/FTquestions released.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/subroutines/csvWriter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -598,13 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/attempts.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/master/UI EV updates/statistics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -612,13 +615,6 @@
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/Test File Example.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -632,27 +628,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/statistics.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/master/UI EV updates/statistics.py]">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/editTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -677,13 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="650">
           <caret line="2344" selection-start-line="2344" selection-end-line="2344" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/results.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -722,30 +694,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/dialogwindow.py">
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/exams.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="91" column="27" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/questions.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/newTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="83" column="22" lean-forward="true" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -759,10 +711,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master/UI EV updates/exams.csv">
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/statistics.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/attempts.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/editTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/FTquestions released.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/newTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/results.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/Test File Example.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/dialogwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="91" column="27" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master/UI EV updates/questions.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>

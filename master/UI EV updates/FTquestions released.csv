@@ -1,5 +1,0 @@
-﻿Q0001,1,What can represent an object in real world? Please select one of the following:,"Something tangible, like a computer","A process, like an engine test","A role, like a doctor",All the above 
-Q0002,2,Fill in the missing word. ______ determines how and object acts and reacts.,,,,behaviour
-Q0003,3,What property of a class describes a range of values that instances of the property may hold?,,,,attribute
-Q0004,4,Which visibility attribute indicates that data can only be accessed within the class? ,,,,private
-Q0005,5,"Apart from attributes, what else can subclasses inherit from parent class?",,,,operations
