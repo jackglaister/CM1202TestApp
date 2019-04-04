@@ -120,7 +120,7 @@ class StudentWindow(MenuScreen):
 def main(user):
 
     root = Tk()
-    root.geometry("600x300")
+    root.geometry("800x800")
     app = StudentWindow(root, user)
     root.mainloop()
 
