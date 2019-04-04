@@ -77,7 +77,6 @@ class TestForm(Dialog):
 
     def body(self, master):
 
-
         self.testType.set(None)
         frame = Frame(self.root)
         self.frame = frame
