@@ -17,8 +17,6 @@ OOP,formative,tax,Q2003,Which visibility attribute indicates that data can only 
 OOP,formative,mcq,Q2004,Which of the following is not part of OOP?,Type checking,Multitasking,Polymorphism,Information hiding,None
 OOP,formative,mcq,Q2005,Constructors are used to:,To build a user interface,Free memory,Initialize a newly created object,To create a sub class,None
 OOP,formative,mcq,Q2006,An object that has more than one form is referred to as an:,Inheritance, Interface,Abstract class,Polymorphism,None
-JavaScript Test Example,summative,mcq,q456066,Which of the following are capabilities of functions in JavaScript?,Return a value,Accept parameters and return a value,None of the above,Accept parameters,4
-JavaScript Test Example,summative,tax,q299333,In what HTML elemnt you put JavaScript?,script,,,,script
 Another HTML test,formative,tax,q66897,HTML comments start with <!-- and end with -->. Answer with True or False,True,,,,True
 Another HTML test,formative,mcq,q942372,The HTML <canvas> element is used to:,display database records,create draggable elements,manipulate data in MySQL,draw graphics,4
 Another HTML test,formative,mcq,q256153,"Q0004,4,What is the correct HTML for making a drop-down list?",<list>,"<input type=""""list"""">","<input type=""""dropdown"""">",<select>,4
