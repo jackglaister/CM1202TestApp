@@ -1,20 +1,31 @@
 TestName,TestType,QuestionType,QuestionId,Question,Answer1,Answer2,Answer3,Answer4,Correct
-Web Applications,formative,mcq,Q0001,What does HTML stand for?,Home Tool Markup Language,Hyperlinks and Text Markup Language,None of the above,Hyper Text Markup Language,None
-Web Applications,formative,mcq,Q0002,Where in an HTML document is the correct place to refer to an external style sheet?,At the end of the document,At the top of the document,In the section,Anywhere it's fine,None
-Web Applications,formative,mcq,Q0003,Which input type defines a slider control?,controls ,search,slider,range,None
-Web Applications,formative,mcq,Q0004,What is a cell padding?,Used to set space between cells,Used to separate cells walls from their contents,Both a and b above, Used to provide width to a cell,None
-Web Applications,formative,mcq,Q0005,How do you change the left margin of an element?,text-indent,margin:,margin-left,indent:,None
-Web Applications,formative,mcq,Q0006,Which CSS property controls the text size?,text-size,text-style,font-size,font-style,None
+Web Applications,formative,mcq,Q0001,What does HTML stand for?,Home Tool Markup Language,Hyperlinks and Text Markup Language,None of the above,Hyper Text Markup Language,4
+Web Applications,formative,mcq,Q0002,Where in an HTML document is the correct place to refer to an external style sheet?,At the end of the document,At the top of the document,In the section,Anywhere it's fine,3
+Web Applications,formative,mcq,Q0003,Which input type defines a slider control?,controls ,search,slider,range,4
+Web Applications,formative,mcq,Q0004,What is a cell padding?,Used to set space between cells,Used to separate cells walls from their contents,Both a and b above, Used to provide width to a cell,2
+Web Applications,formative,mcq,Q0005,How do you change the left margin of an element?,text-indent,margin:,margin-left,indent:,3
+Web Applications,formative,mcq,Q0006,Which CSS property controls the text size?,text-size,text-style,font-size,font-style,3
 Front End test,summative,tax,Q1001,Are CSS property names case-sensitive?Answer with yes or no,,,,,
-Front End test,summative,mcq,Q1002,What is the use of the only selector?,Stops older browsers from parsing the remainder of the selector,Apply the style for screen only and ignore the device max-width,Both options,It does nothing,1
-Front End test,summative,mcq,Q1003,How can you clear a floated element?,Clear:both,Press the delete key,Del tag,Strike tag,1
-Front End test,summative,mcq,Q1004,Which of the following is described as a collection of images put in a single image?,Float,Align,Sprite,Image,1
-Front End test,summative,mcq,Q1005,A collection of data containing both properties and methods is called:,tag,selector,object,class,1
-Front End test,summative,mcq,Q1006,What should be the very last thing in an HTML document?,the heading,title,body,doc type,1
-OOP test,formative,mcq,Q2001,What can represent an object in real world? Please select one of the following:,Something tangible - like a computer,A process - like an engine test,A role - like a doctor,All the above,None
-OOP test,formative,tax,Q2002,What property of a class describes a range of values that instances of the property may hold?,attribute,,,,
-OOP test,formative,tax,Q2003,Which visibility attribute indicates that data can only be accessed within the class?,private,,,,
-OOP test,formative,mcq,Q2004,Which of the following is not part of OOP?,Type checking,Multitasking,Polymorphism,Information hiding,None
-OOP test,formative,mcq,Q2005,Constructors are used to:,To build a user interface,Free memory,Initialize a newly created object,To create a sub class,None
-OOP test,formative,mcq,Q2006,An object that has more than one form is referred to as an:,Inheritance, Interface,Abstract class,Polymorphism,None
-new test,summative,mcq,q111821,dd,ddd,dd,dd,dd,3
+Front End test,summative,mcq,Q1002,What is the use of the only selector?,Stops older browsers from parsing the remainder of the selector,Apply the style for screen only and ignore the device max-width,Both options,It does nothing,None
+Front End test,summative,mcq,Q1003,How can you clear a floated element?,Clear:both,Press the delete key,Del tag,Strike tag,None
+Front End test,summative,mcq,Q1004,Which of the following is described as a collection of images put in a single image?,Float,Align,Sprite,Image,None
+Front End test,summative,mcq,Q1005,A collection of data containing both properties and methods is called:,tag,selector,object,class,None
+Front End test,summative,mcq,Q1006,What should be the very last thing in an HTML document?,the heading,title,body,doc type,None
+OOP,formative,mcq,Q2001,What can represent an object in real world? Please select one of the following:,Something tangible - like a computer,A process - like an engine test,A role - like a doctor,All the above,None
+OOP,formative,tax,Q2002,What property of a class describes a range of values that instances of the property may hold?,attribute,,,,
+OOP,formative,tax,Q2003,Which visibility attribute indicates that data can only be accessed within the class?,private,,,,
+OOP,formative,mcq,Q2004,Which of the following is not part of OOP?,Type checking,Multitasking,Polymorphism,Information hiding,None
+OOP,formative,mcq,Q2005,Constructors are used to:,To build a user interface,Free memory,Initialize a newly created object,To create a sub class,None
+OOP,formative,mcq,Q2006,An object that has more than one form is referred to as an:,Inheritance, Interface,Abstract class,Polymorphism,None
+JavaScript Test Example,summative,mcq,q456066,Which of the following are capabilities of functions in JavaScript?,Return a value,Accept parameters and return a value,None of the above,Accept parameters,4
+JavaScript Test Example,summative,tax,q299333,In what HTML elemnt you put JavaScript?,script,,,,script
+Another HTML test,formative,tax,q66897,HTML comments start with <!-- and end with -->. Answer with True or False,True,,,,True
+Another HTML test,formative,mcq,q942372,The HTML <canvas> element is used to:,display database records,create draggable elements,manipulate data in MySQL,draw graphics,4
+Another HTML test,formative,mcq,q256153,"Q0004,4,What is the correct HTML for making a drop-down list?",<list>,"<input type=""""list"""">","<input type=""""dropdown"""">",<select>,4
+Another HTML test,formative,mcq,q741434,"Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",longdesc,title,src,alt,4
+Another HTML test,formative,mcq,q892470,What is the correct HTML for making a text input field?,"<input type=""""textfield"""">","<textinput type=""""text"""">",<textfield>,"<input type=""""text"""">",4
+Test about Wales,summative,mcq,q23515,The population of Wales is roughly the same as ...?,Canada,Singapore,New Zealand,Singapore,3
+Test about Wales,summative,mcq,q22948,Per square mile Wales has the world record for the most ...?,Rugby players,Singers,Castles,Valleys,3
+Test about Wales,summative,mcq,q24774,A large number of Welsh towns start with Llan. Llan means ..?,River,Valley,Church,Hill,3
+Test about Wales,summative,mcq,q859373,The patreon of saint Wales is ..?,George,Andrew ,Patrick,David,4
+Test about Wales,summative,tax,q178331,The capital city of Wales is ..?,Cardiff,,,,Cardiff

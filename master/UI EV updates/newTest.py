@@ -97,7 +97,7 @@ class TestForm(Dialog):
         Entry(self, textvariable=self.dueDate).grid(row=row, column=1)
 
         row += 1
-        Label(self, text="Release Date").grid(row=row, column=0)
+        Label(self, text="Release results 1/yes 0/no").grid(row=row, column=0)
         Entry(self, textvariable=self.releaseDate).grid(row=row, column=1)
 
         row += 1

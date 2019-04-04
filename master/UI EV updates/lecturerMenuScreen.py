@@ -87,18 +87,6 @@ class LecturerWindow(MenuScreen):
         '''
         Edit test.
 
-        At the moment the lecturer is only able to mark one of the answers as the correct answer.
-        It's not possible at the omment to edit the question text or the answer text.
-
-        once the lecturer clicks the ok buttong, we iterate through all the questions that were
-        loaded at the time the object was initialized. (this is in the self.all_questions field.
-
-        if any of the questions in all-questions have been edited, we set the 'Correct' field in that
-        to the choice that the lecturer made by clicking the radio button.
-
-        Then we write that back to the file. (all the equestions are written because with CSV you
-        can't just write a part of the file
-
         '''
 
         self.root.title("Edit Test")
@@ -110,6 +98,8 @@ class LecturerWindow(MenuScreen):
 
         if edit.applied:
             q = edit.questions
+            exam["TestName"] = edit.questionvar.get()
+            exam["TestType"] = edit.testType.get()
 
             with open("questions.csv", "w") as f:
                 writer = csv.DictWriter(f, fieldnames=QUESTION_COLUMNS, delimiter=',', lineterminator='\n')
@@ -117,17 +107,16 @@ class LecturerWindow(MenuScreen):
                     for edited_question in q:
                         if question['QuestionId'] == edited_question['QuestionId']:
                             try:
-                                question['Correct'] = edited_question['Selected']
+                                question['Correct'] = edited_question.get('Selected','')
+                                question['TestName'] = exam['TestName']
                                 del question['Selected']
-                                break
+
                             except KeyError:
                                 pass
 
                     write_back = {k:v for k,v in question.items() if k in QUESTION_COLUMNS}
                     writer.writerow(write_back)
 
-            exam["TestName"] = edit.questionvar.get()
-            exam["TestType"] = edit.testType.get()
             self.write_exams()
             self.display_table()
 

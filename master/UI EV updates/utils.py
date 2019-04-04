@@ -213,9 +213,7 @@ class TakeTest(Dialog):
             self.row += 1
 
             if question["QuestionType"] == "mcq":
- #               if self.edit:
- #                   self.answervar[i] = question["Correct"]
- #               else:
+
                 self.answervar[i].set(None)
                 for ans in range(1, 5):
                     Radiobutton(self, variable=self.answervar[i],
@@ -223,7 +221,6 @@ class TakeTest(Dialog):
 
                     self.row += 1
             else:
-#                if self.edit:
-#                    self.answervar[i].set(question["Correct"])
+
                 Entry(self, textvar=self.answervar[i]).grid(row=self.row, column=1, sticky=W+E+N+S)
                 self.row += 1
